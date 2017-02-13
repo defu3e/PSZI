@@ -1,5 +1,5 @@
 #include "headall.h"
-//#include <commctrl.h>       // для управляющих элментов
+//#include <commctrl.h>       // РґР»СЏ СѓРїСЂР°РІР»СЏСЋС‰РёС… СЌР»РјРµРЅС‚РѕРІ
 #include <Shlobj.h>
 #include <Commctrl.h>
 #include <Uxtheme.h>
@@ -53,7 +53,7 @@
 #define IDC_STATIC18   2040
 #define IDC_STATIC19   2041
 #define IDC_STATIC20   2042
-/**************************Прототипы функций*********************************/
+/**************************РџСЂРѕС‚РѕС‚РёРїС‹ С„СѓРЅРєС†РёР№*********************************/
 /***************************************************************************/
 LRESULT CALLBACK wnd_proc0  (HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 void    create_wnd_content0 (HWND parent);
@@ -62,16 +62,16 @@ int     message_loop        ();
 HWND    create_wnd_0        ();
 /***************************************************************************/
 
-/*************************Глобальные переменные*****************************/
+/*************************Р“Р»РѕР±Р°Р»СЊРЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ*****************************/
 /***************************************************************************/
 HINSTANCE   instance;
 HFONT       h_font;
 /***************************************************************************/
 
-int WINAPI WinMain(HINSTANCE hinstance,     //  дескриптор экземпляра
-                   HINSTANCE hprevinst,     //  не испрользуется
-                   LPSTR cmdline,           //  указатель на параметы командной строки
-                   int show)                //  код состояния окна
+int WINAPI WinMain(HINSTANCE hinstance,     //  РґРµСЃРєСЂРёРїС‚РѕСЂ СЌРєР·РµРјРїР»СЏСЂР°
+                   HINSTANCE hprevinst,     //  РЅРµ РёСЃРїСЂРѕР»СЊР·СѓРµС‚СЃСЏ
+                   LPSTR cmdline,           //  СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РїР°СЂР°РјРµС‚С‹ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё
+                   int show)                //  РєРѕРґ СЃРѕСЃС‚РѕСЏРЅРёСЏ РѕРєРЅР°
 {
 instance = hinstance;
 register_classes();
@@ -81,16 +81,16 @@ return message_loop();
 }
 
 /*==============================================================================================================================*/
-/*=========================================== Обработка сообщений главного окна ================================================*/
-LRESULT CALLBACK wnd_proc0(HWND hwnd,       // дескриптор окна
-                           UINT msg,        // код сообщения
-                           WPARAM wparam,   // 32-битные пара
-                           LPARAM lparam)   // метры
+/*=========================================== РћР±СЂР°Р±РѕС‚РєР° СЃРѕРѕР±С‰РµРЅРёР№ РіР»Р°РІРЅРѕРіРѕ РѕРєРЅР° ================================================*/
+LRESULT CALLBACK wnd_proc0(HWND hwnd,       // РґРµСЃРєСЂРёРїС‚РѕСЂ РѕРєРЅР°
+                           UINT msg,        // РєРѕРґ СЃРѕРѕР±С‰РµРЅРёСЏ
+                           WPARAM wparam,   // 32-Р±РёС‚РЅС‹Рµ РїР°СЂР°
+                           LPARAM lparam)   // РјРµС‚СЂС‹
 {
 
 /*=======================================================================*/
-char            szFile[MAX_PATH], // имя файла
-                strNum[MAX_PATH], // путь сканирования
+char            szFile[MAX_PATH], // РёРјСЏ С„Р°Р№Р»Р°
+                strNum[MAX_PATH], // РїСѓС‚СЊ СЃРєР°РЅРёСЂРѕРІР°РЅРёСЏ
                 pwStr[strlen(PWORD)];
 TCHAR           szDir[MAX_PATH];
 U8              offRunResult;
@@ -99,12 +99,12 @@ HWND            hf,
                 hEdit_2,
                 hEdit_3,
                 hRadio;
-BROWSEINFO      bInfo;          // открытие каталога
-OPENFILENAME    ofn;            // открытие файла
-LPITEMIDLIST    lpItem;         // для просмотра содержимого окна
-HBRUSH          br;             // кисть
+BROWSEINFO      bInfo;          // РѕС‚РєСЂС‹С‚РёРµ РєР°С‚Р°Р»РѕРіР°
+OPENFILENAME    ofn;            // РѕС‚РєСЂС‹С‚РёРµ С„Р°Р№Р»Р°
+LPITEMIDLIST    lpItem;         // РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РѕРєРЅР°
+HBRUSH          br;             // РєРёСЃС‚СЊ
 /*=======================================================================*/
-hEdit_1 = GetDlgItem(hwnd, IDC_EDIT0); // дескрипторы поля выбора файла
+hEdit_1 = GetDlgItem(hwnd, IDC_EDIT0); // РґРµСЃРєСЂРёРїС‚РѕСЂС‹ РїРѕР»СЏ РІС‹Р±РѕСЂР° С„Р°Р№Р»Р°
 hEdit_2 = GetDlgItem(hwnd, IDC_EDIT1);
 hEdit_3 = GetDlgItem(hwnd, IDC_EDIT2);
 /*=======================================================================*/
@@ -121,7 +121,7 @@ switch (msg)
                     if (offRunResult==1)
                         {
                             system("shutdown -r -t 15");
-                            FatalAppExitA(0, "Компьютер будет скоро перезагружен...");
+                            FatalAppExitA(0, "РљРѕРјРїСЊСЋС‚РµСЂ Р±СѓРґРµС‚ СЃРєРѕСЂРѕ РїРµСЂРµР·Р°РіСЂСѓР¶РµРЅ...");
                         }
             break;
 
@@ -129,20 +129,20 @@ switch (msg)
                 if (on_autorun())
                 {
                     system("shutdown -r -t 15");
-                    FatalAppExitA(0, "Компьютер будет скоро перезагружен...");
+                    FatalAppExitA(0, "РљРѕРјРїСЊСЋС‚РµСЂ Р±СѓРґРµС‚ СЃРєРѕСЂРѕ РїРµСЂРµР·Р°РіСЂСѓР¶РµРЅ...");
                 }
             break;
 
             case IDC_BUTTON1:
-                GetWindowText(hEdit_1,strNum,MAX_PATH);         // считать путь
-                if (IsDlgButtonChecked(hwnd, IDC_RADIO1))       // если скан_файл
+                GetWindowText(hEdit_1,strNum,MAX_PATH);         // СЃС‡РёС‚Р°С‚СЊ РїСѓС‚СЊ
+                if (IsDlgButtonChecked(hwnd, IDC_RADIO1))       // РµСЃР»Рё СЃРєР°РЅ_С„Р°Р№Р»
                     start_md5_scanner (strNum, 1);
                 else
                     start_md5_scanner (strNum, 0);
 			break;
 
             case IDC_BUTTON4:
-                ZeroMemory(&ofn, sizeof(ofn));          // выделение памяти
+                ZeroMemory(&ofn, sizeof(ofn));          // РІС‹РґРµР»РµРЅРёРµ РїР°РјСЏС‚Рё
                 ofn.lStructSize = sizeof(ofn);
                 ofn.hwndOwner = hwnd;
                 ofn.lpstrFile = szFile;
@@ -158,7 +158,7 @@ switch (msg)
 
                 if (GetOpenFileName(&ofn)==TRUE)
                     hf = CreateFile(ofn.lpstrFile,
-                                    NULL,               // Тип досупа к объекту
+                                    NULL,               // РўРёРї РґРѕСЃСѓРїР° Рє РѕР±СЉРµРєС‚Сѓ
                                     0,
                                     (LPSECURITY_ATTRIBUTES) NULL,
                                     OPEN_EXISTING,
@@ -170,12 +170,12 @@ switch (msg)
             break;
 
             case IDC_BUTTON3:
-                GetWindowText(hEdit_2, strNum, MAX_PATH);     // считать путь
+                GetWindowText(hEdit_2, strNum, MAX_PATH);     // СЃС‡РёС‚Р°С‚СЊ РїСѓС‚СЊ
                 GetWindowText(hEdit_3, pwStr, MAX_PATH);
 
-                if (strcmp (pwStr,PWORD) != 0)      // Если пароль неверный
+                if (strcmp (pwStr,PWORD) != 0)      // Р•СЃР»Рё РїР°СЂРѕР»СЊ РЅРµРІРµСЂРЅС‹Р№
                 {
-                    if (strcmp (pwStr, "") == 0)    // если ничего не введено
+                    if (strcmp (pwStr, "") == 0)    // РµСЃР»Рё РЅРёС‡РµРіРѕ РЅРµ РІРІРµРґРµРЅРѕ
                         errors_list(9, pwStr);
                     else
                         errors_list (10, pwStr);
@@ -190,13 +190,13 @@ switch (msg)
 
             case IDC_BUTTON2:
                 if (start_crc_scanner ()==0)
-                MessageBox(NULL, "Сканирование завершено", "CRC-сканер", MB_OK|MB_ICONINFORMATION);
+                MessageBox(NULL, "РЎРєР°РЅРёСЂРѕРІР°РЅРёРµ Р·Р°РІРµСЂС€РµРЅРѕ", "CRC-СЃРєР°РЅРµСЂ", MB_OK|MB_ICONINFORMATION);
             break;
 
         case IDC_BUTTON0:
             if (IsDlgButtonChecked(hwnd, IDC_RADIO1))
             {
-                ZeroMemory(&ofn, sizeof(ofn));          // выделение памяти
+                ZeroMemory(&ofn, sizeof(ofn));          // РІС‹РґРµР»РµРЅРёРµ РїР°РјСЏС‚Рё
                 ofn.lStructSize = sizeof(ofn);
                 ofn.hwndOwner = hwnd;
                 ofn.lpstrFile = szFile;
@@ -211,7 +211,7 @@ switch (msg)
 
                 if (GetOpenFileName(&ofn)==TRUE)
                     hf = CreateFile(ofn.lpstrFile,
-                                    NULL,               // Тип досупа к объекту
+                                    NULL,               // РўРёРї РґРѕСЃСѓРїР° Рє РѕР±СЉРµРєС‚Сѓ
                                     0,
                                     (LPSECURITY_ATTRIBUTES) NULL,
                                     OPEN_EXISTING,
@@ -226,7 +226,7 @@ switch (msg)
                 bInfo.hwndOwner = hwnd;
                 bInfo.pidlRoot = NULL;
                 bInfo.pszDisplayName = szDir;
-                bInfo.lpszTitle = "Выберите, пожалуйста, каталог для сканирования";
+                bInfo.lpszTitle = "Р’С‹Р±РµСЂРёС‚Рµ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, РєР°С‚Р°Р»РѕРі РґР»СЏ СЃРєР°РЅРёСЂРѕРІР°РЅРёСЏ";
                 bInfo.ulFlags = BIF_RETURNFSANCESTORS | BIF_DONTGOBELOWDOMAIN;
                 bInfo.lpfn = NULL;
                 bInfo.lParam = 0;
@@ -272,8 +272,8 @@ switch (msg)
 
     case WM_CTLCOLORSTATIC:
     {
-        SetTextColor(hwnd, 0x00000000); // Не работает
-        SetBkMode(hwnd, TRANSPARENT); // Не работает
+        SetTextColor(hwnd, 0x00000000); // РќРµ СЂР°Р±РѕС‚Р°РµС‚
+        SetBkMode(hwnd, TRANSPARENT); // РќРµ СЂР°Р±РѕС‚Р°РµС‚
         SetBkColor (hwnd, 0x00FFFFFF);
         return (INT_PTR)CreateSolidBrush(0x00FFFFFF);
     }
@@ -296,56 +296,56 @@ switch (msg)
 } // CALLBACK wnd_proc0()
 
 
-/*===========================================Создание главного окна===========================================================*/
+/*===========================================РЎРѕР·РґР°РЅРёРµ РіР»Р°РІРЅРѕРіРѕ РѕРєРЅР°===========================================================*/
 /*============================================================================================================================*/
 HWND create_wnd_0()
 {
 	HWND hwnd;
 //	RECT screen_rect;
-//    GetWindowRect(GetDesktopWindow(),&screen_rect); // разрешение экрана
+//    GetWindowRect(GetDesktopWindow(),&screen_rect); // СЂР°Р·СЂРµС€РµРЅРёРµ СЌРєСЂР°РЅР°
 //    int scr_width = screen_rect.right-screen_rect.left;
 //    int scr_height = screen_rect.bottom-screen_rect.top;
     int x = (GetSystemMetrics(SM_CXSCREEN)) / 2 - 300;
     int y = (GetSystemMetrics(SM_CYSCREEN)) / 2 - 300;
 
-	hwnd = CreateWindowEx( WS_EX_APPWINDOW,                 // Активизирует окно на панели задач
-                          WND_CLASS_NAME0,                  // указатель на зарегистрированное имя класса
-                          "ПСЗИ 0.1",                       // указатель на имя окна
+	hwnd = CreateWindowEx( WS_EX_APPWINDOW,                 // РђРєС‚РёРІРёР·РёСЂСѓРµС‚ РѕРєРЅРѕ РЅР° РїР°РЅРµР»Рё Р·Р°РґР°С‡
+                          WND_CLASS_NAME0,                  // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅРѕРµ РёРјСЏ РєР»Р°СЃСЃР°
+                          "РџРЎР—Р 0.1",                       // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РёРјСЏ РѕРєРЅР°
                           WS_OVERLAPPEDWINDOW^WS_THICKFRAME^WS_MAXIMIZEBOX,
-                          x,                                // положение по X
-                          y,                                // положение по Y
-                          583,                              // высота
-                          430,                              // и ширина создаваемого окна
-                          NULL,                             // Идентифицирует окно родителя
-                          NULL,                             // меню
-                          instance,                         // экземпляр модуля, который связан с окном
-                          NULL);                            // значение, переданное окну через структуру CREATESTRUCT
+                          x,                                // РїРѕР»РѕР¶РµРЅРёРµ РїРѕ X
+                          y,                                // РїРѕР»РѕР¶РµРЅРёРµ РїРѕ Y
+                          583,                              // РІС‹СЃРѕС‚Р°
+                          430,                              // Рё С€РёСЂРёРЅР° СЃРѕР·РґР°РІР°РµРјРѕРіРѕ РѕРєРЅР°
+                          NULL,                             // РРґРµРЅС‚РёС„РёС†РёСЂСѓРµС‚ РѕРєРЅРѕ СЂРѕРґРёС‚РµР»СЏ
+                          NULL,                             // РјРµРЅСЋ
+                          instance,                         // СЌРєР·РµРјРїР»СЏСЂ РјРѕРґСѓР»СЏ, РєРѕС‚РѕСЂС‹Р№ СЃРІСЏР·Р°РЅ СЃ РѕРєРЅРѕРј
+                          NULL);                            // Р·РЅР°С‡РµРЅРёРµ, РїРµСЂРµРґР°РЅРЅРѕРµ РѕРєРЅСѓ С‡РµСЂРµР· СЃС‚СЂСѓРєС‚СѓСЂСѓ CREATESTRUCT
 
-	ShowWindow(hwnd, SW_SHOW);        // Отобразить окно
-	UpdateWindow(hwnd);               // Перерисовать окно
+	ShowWindow(hwnd, SW_SHOW);        // РћС‚РѕР±СЂР°Р·РёС‚СЊ РѕРєРЅРѕ
+	UpdateWindow(hwnd);               // РџРµСЂРµСЂРёСЃРѕРІР°С‚СЊ РѕРєРЅРѕ
 	return hwnd;
 }
 /*============================================================================================================================*/
 
-/*============================================ Создание контента окна ===========================================================*/
+/*============================================ РЎРѕР·РґР°РЅРёРµ РєРѕРЅС‚РµРЅС‚Р° РѕРєРЅР° ===========================================================*/
 /*===============================================================================================================================*/
 void create_wnd_content0(HWND parent)
 {
 	HWND wnd;
     HFONT h_font = CreateFont(
-                              18,                       // высота шрифта
-                              0,                        // средняя ширина символа
-                              0,                        // угол наклона
-                              0,                        // угол ориентации базисной линии
-                              500,                      // толщина шрифта
-                              FALSE,                    // описатель параметра курсивного шрифта
-                              FALSE,                    // описатель параметра подчеркивания
-                              FALSE,                    // описатель параметра зачеркивания
-                              RUSSIAN_CHARSET,          // идентификатор набора символов
-                              OUT_OUTLINE_PRECIS,       // точность вывода
-                              CLIP_DEFAULT_PRECIS,      // точность отсечения
-                              DEFAULT_QUALITY,          // качество вывода
-                              VARIABLE_PITCH,           // шаг между символами шрифта и семейство
+                              18,                       // РІС‹СЃРѕС‚Р° С€СЂРёС„С‚Р°
+                              0,                        // СЃСЂРµРґРЅСЏСЏ С€РёСЂРёРЅР° СЃРёРјРІРѕР»Р°
+                              0,                        // СѓРіРѕР» РЅР°РєР»РѕРЅР°
+                              0,                        // СѓРіРѕР» РѕСЂРёРµРЅС‚Р°С†РёРё Р±Р°Р·РёСЃРЅРѕР№ Р»РёРЅРёРё
+                              500,                      // С‚РѕР»С‰РёРЅР° С€СЂРёС„С‚Р°
+                              FALSE,                    // РѕРїРёСЃР°С‚РµР»СЊ РїР°СЂР°РјРµС‚СЂР° РєСѓСЂСЃРёРІРЅРѕРіРѕ С€СЂРёС„С‚Р°
+                              FALSE,                    // РѕРїРёСЃР°С‚РµР»СЊ РїР°СЂР°РјРµС‚СЂР° РїРѕРґС‡РµСЂРєРёРІР°РЅРёСЏ
+                              FALSE,                    // РѕРїРёСЃР°С‚РµР»СЊ РїР°СЂР°РјРµС‚СЂР° Р·Р°С‡РµСЂРєРёРІР°РЅРёСЏ
+                              RUSSIAN_CHARSET,          // РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РЅР°Р±РѕСЂР° СЃРёРјРІРѕР»РѕРІ
+                              OUT_OUTLINE_PRECIS,       // С‚РѕС‡РЅРѕСЃС‚СЊ РІС‹РІРѕРґР°
+                              CLIP_DEFAULT_PRECIS,      // С‚РѕС‡РЅРѕСЃС‚СЊ РѕС‚СЃРµС‡РµРЅРёСЏ
+                              DEFAULT_QUALITY,          // РєР°С‡РµСЃС‚РІРѕ РІС‹РІРѕРґР°
+                              VARIABLE_PITCH,           // С€Р°Рі РјРµР¶РґСѓ СЃРёРјРІРѕР»Р°РјРё С€СЂРёС„С‚Р° Рё СЃРµРјРµР№СЃС‚РІРѕ
                               TEXT("Times New Roman"));
 
 	TC_ITEM tci;
@@ -356,111 +356,111 @@ void create_wnd_content0(HWND parent)
         InvalidateRect(wnd, NULL, TRUE);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
 
-	tci.pszText = "Сканирование";
+	tci.pszText = "РЎРєР°РЅРёСЂРѕРІР°РЅРёРµ";
 	tci.lParam = 5008;
 	SendMessage(wnd, TCM_INSERTITEM, 0, (LPARAM) &tci);
 
-	tci.pszText = "Шифрование";
+	tci.pszText = "РЁРёС„СЂРѕРІР°РЅРёРµ";
 	tci.lParam = 5009;
 	SendMessage(wnd, TCM_INSERTITEM, 1, (LPARAM) &tci);
 
-	tci.pszText = "Автозапуск";
+	tci.pszText = "РђРІС‚РѕР·Р°РїСѓСЃРє";
 	tci.lParam = 5010;
 	SendMessage(wnd, TCM_INSERTITEM, 2, (LPARAM) &tci);
 
-	tci.pszText = "Дополнительно";
+	tci.pszText = "Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ";
 	tci.lParam = 5011;
 	SendMessage(wnd, TCM_INSERTITEM, 3, (LPARAM) &tci);
-/*============================================================Сканирование==================================================================*/
+/*============================================================РЎРєР°РЅРёСЂРѕРІР°РЅРёРµ==================================================================*/
 /*==========================================================================================================================================*/
-	wnd = CreateWindowEx(0x00000000, "Button", "Каталог", 0x50010009, 32, 135, 96, 32, parent, (HMENU) IDC_RADIO0, instance, NULL);
+	wnd = CreateWindowEx(0x00000000, "Button", "РљР°С‚Р°Р»РѕРі", 0x50010009, 32, 135, 96, 32, parent, (HMENU) IDC_RADIO0, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5008);
-	wnd = CreateWindowEx(0x00000000, "Button", "Файл", 0x50010009, 32, 185, 96, 32, parent, (HMENU) IDC_RADIO1, instance, NULL);
+	wnd = CreateWindowEx(0x00000000, "Button", "Р¤Р°Р№Р»", 0x50010009, 32, 185, 96, 32, parent, (HMENU) IDC_RADIO1, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5008);
-    wnd = CreateWindowEx(0x00000000, "Button", "Выполнить сканирование", 0x50012F00, 194, 184, 352, 32, parent, (HMENU) IDC_BUTTON1, instance, NULL);
+    wnd = CreateWindowEx(0x00000000, "Button", "Р’С‹РїРѕР»РЅРёС‚СЊ СЃРєР°РЅРёСЂРѕРІР°РЅРёРµ", 0x50012F00, 194, 184, 352, 32, parent, (HMENU) IDC_BUTTON1, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5008);
-	wnd = CreateWindowEx(0x00000000, "Button", "Проверить целостность файлов", 0x50012F00, 38, 345, 504, 32, parent, (HMENU) IDC_BUTTON2, instance, NULL);
+	wnd = CreateWindowEx(0x00000000, "Button", "РџСЂРѕРІРµСЂРёС‚СЊ С†РµР»РѕСЃС‚РЅРѕСЃС‚СЊ С„Р°Р№Р»РѕРІ", 0x50012F00, 38, 345, 504, 32, parent, (HMENU) IDC_BUTTON2, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5008);
-	wnd = CreateWindowEx(0x00000000, "Static", "Контроль  целостности  системы  (обнаружение  изменений)  заключается  в  про-", 0x50000300, 29, 265, 515, 15, parent, (HMENU) IDC_STATIC1, instance, NULL);
+	wnd = CreateWindowEx(0x00000000, "Static", "РљРѕРЅС‚СЂРѕР»СЊ  С†РµР»РѕСЃС‚РЅРѕСЃС‚Рё  СЃРёСЃС‚РµРјС‹  (РѕР±РЅР°СЂСѓР¶РµРЅРёРµ  РёР·РјРµРЅРµРЅРёР№)  Р·Р°РєР»СЋС‡Р°РµС‚СЃСЏ  РІ  РїСЂРѕ-", 0x50000300, 29, 265, 515, 15, parent, (HMENU) IDC_STATIC1, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5008);
-    wnd = CreateWindowEx(0x00000000, "Static", "верке  и  сравнении   текущих  параметров  вычислительной  системы  с   эталон-", 0x50000300, 29, 286, 515, 15, parent, (HMENU) IDC_STATIC6, instance, NULL);
+    wnd = CreateWindowEx(0x00000000, "Static", "РІРµСЂРєРµ  Рё  СЃСЂР°РІРЅРµРЅРёРё   С‚РµРєСѓС‰РёС…  РїР°СЂР°РјРµС‚СЂРѕРІ  РІС‹С‡РёСЃР»РёС‚РµР»СЊРЅРѕР№  СЃРёСЃС‚РµРјС‹  СЃ   СЌС‚Р°Р»РѕРЅ-", 0x50000300, 29, 286, 515, 15, parent, (HMENU) IDC_STATIC6, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5008);
-	wnd = CreateWindowEx(0x00000000, "Static", "ными  параметрами,  соответствующими  ее  не  зараженному   состоянию.", 0x50000300, 29, 308, 516, 15, parent, (HMENU) IDC_STATIC7, instance, NULL);
+	wnd = CreateWindowEx(0x00000000, "Static", "РЅС‹РјРё  РїР°СЂР°РјРµС‚СЂР°РјРё,  СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРјРё  РµРµ  РЅРµ  Р·Р°СЂР°Р¶РµРЅРЅРѕРјСѓ   СЃРѕСЃС‚РѕСЏРЅРёСЋ.", 0x50000300, 29, 308, 516, 15, parent, (HMENU) IDC_STATIC7, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5008);
-	wnd = CreateWindowEx(0x00000000, "Button", "Выбрать...", 0x50012F00, 450, 144, 96, 24, parent, (HMENU) IDC_BUTTON0, instance, NULL);
+	wnd = CreateWindowEx(0x00000000, "Button", "Р’С‹Р±СЂР°С‚СЊ...", 0x50012F00, 450, 144, 96, 24, parent, (HMENU) IDC_BUTTON0, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5008);
-	wnd = CreateWindowEx(0x00000000, "Button", "CRC-сканер", 0x50020007, 16, 240, 550, 150, parent, (HMENU) IDC_GROUP2, instance, NULL);
+	wnd = CreateWindowEx(0x00000000, "Button", "CRC-СЃРєР°РЅРµСЂ", 0x50020007, 16, 240, 550, 150, parent, (HMENU) IDC_GROUP2, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5008);
-	wnd = CreateWindowEx(WS_EX_CLIENTEDGE, "Edit", "Укажите путь...",0x50010080 , 194, 144, 248, 24, parent, (HMENU) IDC_EDIT0, instance, NULL);
+	wnd = CreateWindowEx(WS_EX_CLIENTEDGE, "Edit", "РЈРєР°Р¶РёС‚Рµ РїСѓС‚СЊ...",0x50010080 , 194, 144, 248, 24, parent, (HMENU) IDC_EDIT0, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5008);
-	wnd = CreateWindowEx(0x00000000, "Static", "Метод  сигнатурного  сканирования  заключается  в  выявлении  вредоносного  ПО",
+	wnd = CreateWindowEx(0x00000000, "Static", "РњРµС‚РѕРґ  СЃРёРіРЅР°С‚СѓСЂРЅРѕРіРѕ  СЃРєР°РЅРёСЂРѕРІР°РЅРёСЏ  Р·Р°РєР»СЋС‡Р°РµС‚СЃСЏ  РІ  РІС‹СЏРІР»РµРЅРёРё  РІСЂРµРґРѕРЅРѕСЃРЅРѕРіРѕ  РџРћ",
                       0x50000300, 24, 65, 530, 15, parent, (HMENU) IDC_STATIC0, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5008);
-    wnd = CreateWindowEx(0x00000000, "Static", "по уникальному программному коду (сигнатуре). Обнаружение вирусов осуществля-",
+    wnd = CreateWindowEx(0x00000000, "Static", "РїРѕ СѓРЅРёРєР°Р»СЊРЅРѕРјСѓ РїСЂРѕРіСЂР°РјРјРЅРѕРјСѓ РєРѕРґСѓ (СЃРёРіРЅР°С‚СѓСЂРµ). РћР±РЅР°СЂСѓР¶РµРЅРёРµ РІРёСЂСѓСЃРѕРІ РѕСЃСѓС‰РµСЃС‚РІР»СЏ-",
                       0x50000300, 24, 87, 532, 15, parent, (HMENU) IDC_STATIC4, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5008);
-    wnd = CreateWindowEx(0x00000000, "Static", "ется  путем  сравнения  хэш-сумм  файлов  с  базой  сигнутур  вирусов.",
+    wnd = CreateWindowEx(0x00000000, "Static", "РµС‚СЃСЏ  РїСѓС‚РµРј  СЃСЂР°РІРЅРµРЅРёСЏ  С…СЌС€-СЃСѓРјРј  С„Р°Р№Р»РѕРІ  СЃ  Р±Р°Р·РѕР№  СЃРёРіРЅСѓС‚СѓСЂ  РІРёСЂСѓСЃРѕРІ.",
                       0x50000300, 24, 109, 532, 15, parent, (HMENU) IDC_STATIC5, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5008);
-	wnd = CreateWindowEx(0x00000000, "Button", "MD5-сканер", 0x50020007, 15, 40, 550, 190, parent, (HMENU) IDC_GROUP0, instance, NULL);
+	wnd = CreateWindowEx(0x00000000, "Button", "MD5-СЃРєР°РЅРµСЂ", 0x50020007, 15, 40, 550, 190, parent, (HMENU) IDC_GROUP0, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5008);
 /*==========================================================================================================================================*/
 
-/*============================================================Шифрование====================================================================*/
+/*============================================================РЁРёС„СЂРѕРІР°РЅРёРµ====================================================================*/
 /*==========================================================================================================================================*/
-	wnd = CreateWindowEx(0x00000000, "Button", "Зашифровать", 0x40010009, 16, 274, 107, 32, parent, (HMENU) IDC_RADIO2, instance, NULL);
+	wnd = CreateWindowEx(0x00000000, "Button", "Р—Р°С€РёС„СЂРѕРІР°С‚СЊ", 0x40010009, 16, 274, 107, 32, parent, (HMENU) IDC_RADIO2, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5009);
-	wnd = CreateWindowEx(0x00000000, "Button", "Расшифровать", 0x40010009, 16, 337, 107, 32, parent, (HMENU) IDC_RADIO3, instance, NULL);
+	wnd = CreateWindowEx(0x00000000, "Button", "Р Р°СЃС€РёС„СЂРѕРІР°С‚СЊ", 0x40010009, 16, 337, 107, 32, parent, (HMENU) IDC_RADIO3, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5009);
-	wnd = CreateWindowEx(0x00000200, "Edit", "Укажите путь...", 0x40010080, 170, 275, 285, 25, parent, (HMENU) IDC_EDIT1, instance, NULL);
+	wnd = CreateWindowEx(0x00000200, "Edit", "РЈРєР°Р¶РёС‚Рµ РїСѓС‚СЊ...", 0x40010080, 170, 275, 285, 25, parent, (HMENU) IDC_EDIT1, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5009);
-	wnd = CreateWindowEx(0x00000000, "Button", "Выполнить", 0x40010001, 170, 327, 395, 50, parent, (HMENU) IDC_BUTTON3, instance, NULL);
+	wnd = CreateWindowEx(0x00000000, "Button", "Р’С‹РїРѕР»РЅРёС‚СЊ", 0x40010001, 170, 327, 395, 50, parent, (HMENU) IDC_BUTTON3, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5009);
-	wnd = CreateWindowEx(0x00000000, "Button", "Выбрать...", 0x40010001, 475, 275, 90, 25, parent, (HMENU) IDC_BUTTON4, instance, NULL);
+	wnd = CreateWindowEx(0x00000000, "Button", "Р’С‹Р±СЂР°С‚СЊ...", 0x40010001, 475, 275, 90, 25, parent, (HMENU) IDC_BUTTON4, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5009);
-    wnd = CreateWindowEx(0x00000000, "Static", "Укажите пароль:",0x40000300, 16, 235, 110, 15, parent, (HMENU) IDC_STATIC3, instance, NULL);
+    wnd = CreateWindowEx(0x00000000, "Static", "РЈРєР°Р¶РёС‚Рµ РїР°СЂРѕР»СЊ:",0x40000300, 16, 235, 110, 15, parent, (HMENU) IDC_STATIC3, instance, NULL);
     SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5009);
-	wnd = CreateWindowEx(0x00000000, "Static", "Шифрование — это  способ  повышения  безопасности  файла, при котором его  содер-",
+	wnd = CreateWindowEx(0x00000000, "Static", "РЁРёС„СЂРѕРІР°РЅРёРµ вЂ” СЌС‚Рѕ  СЃРїРѕСЃРѕР±  РїРѕРІС‹С€РµРЅРёСЏ  Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё  С„Р°Р№Р»Р°, РїСЂРё РєРѕС‚РѕСЂРѕРј РµРіРѕ  СЃРѕРґРµСЂ-",
                       0x40000300, 16, 80, 544, 15, parent, (HMENU) IDC_STATIC2, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5009);
-    wnd = CreateWindowEx(0x00000000, "Static", "жимое  преобразуется  так,  что  оно  может  быть  прочитано  только  пользователем,",
+    wnd = CreateWindowEx(0x00000000, "Static", "Р¶РёРјРѕРµ  РїСЂРµРѕР±СЂР°Р·СѓРµС‚СЃСЏ  С‚Р°Рє,  С‡С‚Рѕ  РѕРЅРѕ  РјРѕР¶РµС‚  Р±С‹С‚СЊ  РїСЂРѕС‡РёС‚Р°РЅРѕ  С‚РѕР»СЊРєРѕ  РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј,",
                       0x40000300, 16, 100, 545, 15, parent, (HMENU) IDC_STATIC6, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5009);
-    wnd = CreateWindowEx(0x00000000, "Static", "обладающим соответствующим ключом шифрования для расшифровки содержимого.",
+    wnd = CreateWindowEx(0x00000000, "Static", "РѕР±Р»Р°РґР°СЋС‰РёРј СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРј РєР»СЋС‡РѕРј С€РёС„СЂРѕРІР°РЅРёСЏ РґР»СЏ СЂР°СЃС€РёС„СЂРѕРІРєРё СЃРѕРґРµСЂР¶РёРјРѕРіРѕ.",
                       0x40000300, 16, 120, 544, 15, parent, (HMENU) IDC_STATIC7, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5009);
-    wnd = CreateWindowEx(0x00000000, "Static", "Используйте   шифрование,   когда   требуется   передать   файл   по   незащищённому",
+    wnd = CreateWindowEx(0x00000000, "Static", "РСЃРїРѕР»СЊР·СѓР№С‚Рµ   С€РёС„СЂРѕРІР°РЅРёРµ,   РєРѕРіРґР°   С‚СЂРµР±СѓРµС‚СЃСЏ   РїРµСЂРµРґР°С‚СЊ   С„Р°Р№Р»   РїРѕ   РЅРµР·Р°С‰РёС‰С‘РЅРЅРѕРјСѓ",
                       0x40000300, 16, 160, 544, 15, parent, (HMENU) IDC_STATIC8, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5009);
-    wnd = CreateWindowEx(0x00000000, "Static", "каналу  связи.",
+    wnd = CreateWindowEx(0x00000000, "Static", "РєР°РЅР°Р»Сѓ  СЃРІСЏР·Рё.",
                       0x40000300, 16, 180, 544, 15, parent, (HMENU) IDC_STATIC9, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5009);
-	wnd = CreateWindowEx(0x00000000, "Button", "Шифрование", 0x40020007, 10, 40, 560, 176, parent, (HMENU) IDC_GROUP3, instance, NULL);
+	wnd = CreateWindowEx(0x00000000, "Button", "РЁРёС„СЂРѕРІР°РЅРёРµ", 0x40020007, 10, 40, 560, 176, parent, (HMENU) IDC_GROUP3, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5009);
     wnd = CreateWindowEx(0x00000200, "Edit", "", 0x40010080|WS_BORDER|ES_PASSWORD, 170, 230, 393, 23, parent, (HMENU) IDC_EDIT2, instance, NULL);
@@ -468,87 +468,87 @@ void create_wnd_content0(HWND parent)
         SetWindowLong(wnd, GWL_USERDATA, 5009);
 /*==========================================================================================================================================*/
 
-/*============================================================Автозапуск====================================================================*/
+/*============================================================РђРІС‚РѕР·Р°РїСѓСЃРє====================================================================*/
 /*==========================================================================================================================================*/
-	wnd = CreateWindowEx(0x00000000, "Static", "Часто   заражение   компьютера   вирусом   происходит   посредством   функции   ав-",
+	wnd = CreateWindowEx(0x00000000, "Static", "Р§Р°СЃС‚Рѕ   Р·Р°СЂР°Р¶РµРЅРёРµ   РєРѕРјРїСЊСЋС‚РµСЂР°   РІРёСЂСѓСЃРѕРј   РїСЂРѕРёСЃС…РѕРґРёС‚   РїРѕСЃСЂРµРґСЃС‚РІРѕРј   С„СѓРЅРєС†РёРё   Р°РІ-",
                       0x40000300, 24, 76, 544, 15, parent, (HMENU) IDC_STATIC3, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5010);
-    wnd = CreateWindowEx(0x00000000, "Static", "тозапуска   съёмных   носителей   информации.",
+    wnd = CreateWindowEx(0x00000000, "Static", "С‚РѕР·Р°РїСѓСЃРєР°   СЃСЉС‘РјРЅС‹С…   РЅРѕСЃРёС‚РµР»РµР№   РёРЅС„РѕСЂРјР°С†РёРё.",
                       0x40000300, 24, 100, 544, 15, parent, (HMENU) IDC_STATIC10, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5010);
-    wnd = CreateWindowEx(0x00000000, "Static", "Решением   проблемы   является   отключение   функции   автозапуска.",
+    wnd = CreateWindowEx(0x00000000, "Static", "Р РµС€РµРЅРёРµРј   РїСЂРѕР±Р»РµРјС‹   СЏРІР»СЏРµС‚СЃСЏ   РѕС‚РєР»СЋС‡РµРЅРёРµ   С„СѓРЅРєС†РёРё   Р°РІС‚РѕР·Р°РїСѓСЃРєР°.",
                       0x40000300, 24, 160, 544, 15, parent, (HMENU) IDC_STATIC10, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5010);
-//     wnd = CreateWindowEx(0x00000000, "Static", "Автозапуск помогает",
+//     wnd = CreateWindowEx(0x00000000, "Static", "РђРІС‚РѕР·Р°РїСѓСЃРє РїРѕРјРѕРіР°РµС‚",
 //                      0x40000300, 24, 56, 544, 152, parent, (HMENU) IDC_STATIC12, instance, NULL);
 //        SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
 //        SetWindowLong(wnd, GWL_USERDATA, 5010);
-	wnd = CreateWindowEx(0x00000000, "Button", "Включить автозапуск", 0x40010001, 16, 312, 552, 56, parent, (HMENU) IDC_BUTTON6, instance, NULL);
+	wnd = CreateWindowEx(0x00000000, "Button", "Р’РєР»СЋС‡РёС‚СЊ Р°РІС‚РѕР·Р°РїСѓСЃРє", 0x40010001, 16, 312, 552, 56, parent, (HMENU) IDC_BUTTON6, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5010);
-	wnd = CreateWindowEx(0x00000000, "Button", "Отключить автозапуск", 0x40010001, 16, 232, 552, 56, parent, (HMENU) IDC_BUTTON5, instance, NULL);
+	wnd = CreateWindowEx(0x00000000, "Button", "РћС‚РєР»СЋС‡РёС‚СЊ Р°РІС‚РѕР·Р°РїСѓСЃРє", 0x40010001, 16, 232, 552, 56, parent, (HMENU) IDC_BUTTON5, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5010);
-    wnd = CreateWindowEx(0x00000000, "Button", "Автозапуск", 0x40020007, 10, 32, 560, 184, parent, (HMENU) IDC_GROUP4, instance, NULL);
+    wnd = CreateWindowEx(0x00000000, "Button", "РђРІС‚РѕР·Р°РїСѓСЃРє", 0x40020007, 10, 32, 560, 184, parent, (HMENU) IDC_GROUP4, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5010);
 /*==========================================================================================================================================*/
 
-/*============================================================Дополнительно=================================================================*/
+/*============================================================Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ=================================================================*/
 /*==========================================================================================================================================*/
-wnd = CreateWindowEx(0x00000000, "Static", "Программа  «ПСЗИ»  предназначена   для   защиты   информации   на   компьютерах,",
+wnd = CreateWindowEx(0x00000000, "Static", "РџСЂРѕРіСЂР°РјРјР°  В«РџРЎР—РВ»  РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅР°   РґР»СЏ   Р·Р°С‰РёС‚С‹   РёРЅС„РѕСЂРјР°С†РёРё   РЅР°   РєРѕРјРїСЊСЋС‚РµСЂР°С…,",
                       0x40000300, 24, 75, 544, 15, parent, (HMENU) IDC_STATIC11, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5011);
-    wnd = CreateWindowEx(0x00000000, "Static", "работающих   под   управлением   операционной   системы   Windows   (XP  и  выше).",
+    wnd = CreateWindowEx(0x00000000, "Static", "СЂР°Р±РѕС‚Р°СЋС‰РёС…   РїРѕРґ   СѓРїСЂР°РІР»РµРЅРёРµРј   РѕРїРµСЂР°С†РёРѕРЅРЅРѕР№   СЃРёСЃС‚РµРјС‹   Windows   (XP  Рё  РІС‹С€Рµ).",
                       0x40000300, 24, 100, 544, 15, parent, (HMENU) IDC_STATIC12, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5011);
-    wnd = CreateWindowEx(0x00000000, "Static", "«ПЗСИ»   способна   проводить  сигнатурное  сканирование, сканирование на основе",
+    wnd = CreateWindowEx(0x00000000, "Static", "В«РџР—РЎРВ»   СЃРїРѕСЃРѕР±РЅР°   РїСЂРѕРІРѕРґРёС‚СЊ  СЃРёРіРЅР°С‚СѓСЂРЅРѕРµ  СЃРєР°РЅРёСЂРѕРІР°РЅРёРµ, СЃРєР°РЅРёСЂРѕРІР°РЅРёРµ РЅР° РѕСЃРЅРѕРІРµ",
                       0x40000300, 24, 125, 544, 15, parent, (HMENU) IDC_STATIC13, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5011);
- wnd = CreateWindowEx(0x00000000, "Static", "подсчёта  контрольных   сумм,  выполнять   шифрование/расшифрование   файлов  и",
+ wnd = CreateWindowEx(0x00000000, "Static", "РїРѕРґСЃС‡С‘С‚Р°  РєРѕРЅС‚СЂРѕР»СЊРЅС‹С…   СЃСѓРјРј,  РІС‹РїРѕР»РЅСЏС‚СЊ   С€РёС„СЂРѕРІР°РЅРёРµ/СЂР°СЃС€РёС„СЂРѕРІР°РЅРёРµ   С„Р°Р№Р»РѕРІ  Рё",
                       0x40000300, 24, 150, 544, 15, parent, (HMENU) IDC_STATIC14, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5011);
- wnd = CreateWindowEx(0x00000000, "Static", "отключение/включение автозапуска съёмных носителей информации по требованию.",
+ wnd = CreateWindowEx(0x00000000, "Static", "РѕС‚РєР»СЋС‡РµРЅРёРµ/РІРєР»СЋС‡РµРЅРёРµ Р°РІС‚РѕР·Р°РїСѓСЃРєР° СЃСЉС‘РјРЅС‹С… РЅРѕСЃРёС‚РµР»РµР№ РёРЅС„РѕСЂРјР°С†РёРё РїРѕ С‚СЂРµР±РѕРІР°РЅРёСЋ.",
                       0x40000300, 24, 175, 544, 15, parent, (HMENU) IDC_STATIC15, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5011);
 
- wnd = CreateWindowEx(0x00000000, "Static", "Программа  «ПСЗИ»  является  бесплатной  для  коммерческого или корпоративного",
+ wnd = CreateWindowEx(0x00000000, "Static", "РџСЂРѕРіСЂР°РјРјР°  В«РџРЎР—РВ»  СЏРІР»СЏРµС‚СЃСЏ  Р±РµСЃРїР»Р°С‚РЅРѕР№  РґР»СЏ  РєРѕРјРјРµСЂС‡РµСЃРєРѕРіРѕ РёР»Рё РєРѕСЂРїРѕСЂР°С‚РёРІРЅРѕРіРѕ",
                       0x40000300, 24, 205, 544, 15, parent, (HMENU) IDC_STATIC16, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5011);
-wnd = CreateWindowEx(0x00000000, "Static", "использования.",
+wnd = CreateWindowEx(0x00000000, "Static", "РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ.",
                       0x40000300, 24, 230, 544, 15, parent, (HMENU) IDC_STATIC17, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5011);
 
-wnd = CreateWindowEx(0x00000000, "Static", "Связаться  с  разработчиком  программы  вы  можете  по:",
+wnd = CreateWindowEx(0x00000000, "Static", "РЎРІСЏР·Р°С‚СЊСЃСЏ  СЃ  СЂР°Р·СЂР°Р±РѕС‚С‡РёРєРѕРј  РїСЂРѕРіСЂР°РјРјС‹  РІС‹  РјРѕР¶РµС‚Рµ  РїРѕ:",
                       0x40000300, 24, 290, 544, 15, parent, (HMENU) IDC_STATIC18, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5011);
 
-        wnd = CreateWindowEx(0x00000000, "Static", "–  E-mail :  d e f u z e @ y a . r u",
+        wnd = CreateWindowEx(0x00000000, "Static", "вЂ“  E-mail :  d e f u z e @ y a . r u",
                       0x40000300, 40, 315, 544, 20, parent, (HMENU) IDC_STATIC19, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5011);
 
-        wnd = CreateWindowEx(0x00000000, "Static", "–  Skype :  d e f u 3 e",
+        wnd = CreateWindowEx(0x00000000, "Static", "вЂ“  Skype :  d e f u 3 e",
                       0x40000300, 40, 340, 544, 17, parent, (HMENU) IDC_STATIC20, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5011);
 
-wnd = CreateWindowEx(0x00000000, "Button", "Основные сведения о программе", 0x50020007, 16, 45, 550, 210, parent, (HMENU) IDC_GROUP5, instance, NULL);
+wnd = CreateWindowEx(0x00000000, "Button", "РћСЃРЅРѕРІРЅС‹Рµ СЃРІРµРґРµРЅРёСЏ Рѕ РїСЂРѕРіСЂР°РјРјРµ", 0x50020007, 16, 45, 550, 210, parent, (HMENU) IDC_GROUP5, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5011);
 
-wnd = CreateWindowEx(0x00000000, "Button", "Обратная связь", 0x50020007, 16, 265, 550, 110, parent, (HMENU) IDC_GROUP6, instance, NULL);
+wnd = CreateWindowEx(0x00000000, "Button", "РћР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ", 0x50020007, 16, 265, 550, 110, parent, (HMENU) IDC_GROUP6, instance, NULL);
         SendMessage(wnd, WM_SETFONT, (WPARAM) h_font, TRUE);
         SetWindowLong(wnd, GWL_USERDATA, 5011);
 
@@ -573,52 +573,52 @@ wnd = CreateWindowEx(0x00000000, "Button", "Обратная связь", 0x50020007, 16, 265
     ti.rect.top = frst.top;
     ti.rect.right = frst.right;
     ti.rect.bottom = frst.bottom;
-    //добавляем подсказку для первого прямоугольничка
+    //РґРѕР±Р°РІР»СЏРµРј РїРѕРґСЃРєР°Р·РєСѓ РґР»СЏ РїРµСЂРІРѕРіРѕ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёС‡РєР°
     SendMessage(hEdit, TTM_ADDTOOL, 0, (LPARAM)(LPTOOLINFO)&ti);
 }
 
-/*=====================================================Регистрация класса окна=============================================================*/
+/*=====================================================Р РµРіРёСЃС‚СЂР°С†РёСЏ РєР»Р°СЃСЃР° РѕРєРЅР°=============================================================*/
 /*=========================================================================================================================================*/
 void register_classes()
 {
 	WNDCLASS wc;
 
-	wc.cbClsExtra    = 0;                               /* дополнительная память */
-	wc.cbWndExtra    = 0;                               /*  в байтах */
-	wc.hbrBackground = (HBRUSH)(COLOR_WINDOW);          //дескриптор кисти для фона
-	wc.hCursor       = LoadCursor(NULL, IDC_ARROW);     //дескриптор курсора приложения
+	wc.cbClsExtra    = 0;                               /* РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РїР°РјСЏС‚СЊ */
+	wc.cbWndExtra    = 0;                               /*  РІ Р±Р°Р№С‚Р°С… */
+	wc.hbrBackground = (HBRUSH)(COLOR_WINDOW);          //РґРµСЃРєСЂРёРїС‚РѕСЂ РєРёСЃС‚Рё РґР»СЏ С„РѕРЅР°
+	wc.hCursor       = LoadCursor(NULL, IDC_ARROW);     //РґРµСЃРєСЂРёРїС‚РѕСЂ РєСѓСЂСЃРѕСЂР° РїСЂРёР»РѕР¶РµРЅРёСЏ
 	wc.hIcon         = (HICON)
-                      LoadImage(                        // дескриптор значка
+                      LoadImage(                        // РґРµСЃРєСЂРёРїС‚РѕСЂ Р·РЅР°С‡РєР°
                       GetModuleHandle(NULL),
                       "IDI_ICON",
-                      IMAGE_ICON,                   // тип загружаемого изображения
-                      16,                           // ширина значка
-                      16,                           // высота значка
+                      IMAGE_ICON,                   // С‚РёРї Р·Р°РіСЂСѓР¶Р°РµРјРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
+                      16,                           // С€РёСЂРёРЅР° Р·РЅР°С‡РєР°
+                      16,                           // РІС‹СЃРѕС‚Р° Р·РЅР°С‡РєР°
                       0
                     );
-	wc.hInstance     = instance;                    // дескриптор экземпляра приложения
-	wc.lpszMenuName  = NULL;                        // указатель на имя класса окна
-	wc.style         = CS_HREDRAW|                  // перерисовка окна при перемещении
+	wc.hInstance     = instance;                    // РґРµСЃРєСЂРёРїС‚РѕСЂ СЌРєР·РµРјРїР»СЏСЂР° РїСЂРёР»РѕР¶РµРЅРёСЏ
+	wc.lpszMenuName  = NULL;                        // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РёРјСЏ РєР»Р°СЃСЃР° РѕРєРЅР°
+	wc.style         = CS_HREDRAW|                  // РїРµСЂРµСЂРёСЃРѕРІРєР° РѕРєРЅР° РїСЂРё РїРµСЂРµРјРµС‰РµРЅРёРё
                         CS_HREDRAW|
-                        CS_BYTEALIGNCLIENT|     // выравнивание окна по x
-                        CS_PARENTDC | !(WS_MAXIMIZEBOX);            // отсечение родительского окна (производительности)
+                        CS_BYTEALIGNCLIENT|     // РІС‹СЂР°РІРЅРёРІР°РЅРёРµ РѕРєРЅР° РїРѕ x
+                        CS_PARENTDC | !(WS_MAXIMIZEBOX);            // РѕС‚СЃРµС‡РµРЅРёРµ СЂРѕРґРёС‚РµР»СЊСЃРєРѕРіРѕ РѕРєРЅР° (РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЊРЅРѕСЃС‚Рё)
 
 	wc.lpfnWndProc   = wnd_proc0;
-	wc.lpszClassName = WND_CLASS_NAME0;         // имя класса
+	wc.lpszClassName = WND_CLASS_NAME0;         // РёРјСЏ РєР»Р°СЃСЃР°
 
-	RegisterClass(&wc);                         // регистрация главного окна
+	RegisterClass(&wc);                         // СЂРµРіРёСЃС‚СЂР°С†РёСЏ РіР»Р°РІРЅРѕРіРѕ РѕРєРЅР°
 }
 /*=========================================================================================================================================*/
 
-/*==================================================Цикл сообщений=========================================================================*/
+/*==================================================Р¦РёРєР» СЃРѕРѕР±С‰РµРЅРёР№=========================================================================*/
 /*=========================================================================================================================================*/
 int message_loop()
 {
 	MSG msg;
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
-		TranslateMessage(&msg);         // перевод нажатых клавиш в читаемый вид
-		DispatchMessage(&msg);          // Вызов обработчика
+		TranslateMessage(&msg);         // РїРµСЂРµРІРѕРґ РЅР°Р¶Р°С‚С‹С… РєР»Р°РІРёС€ РІ С‡РёС‚Р°РµРјС‹Р№ РІРёРґ
+		DispatchMessage(&msg);          // Р’С‹Р·РѕРІ РѕР±СЂР°Р±РѕС‚С‡РёРєР°
 	}
 
 	return msg.wParam;
