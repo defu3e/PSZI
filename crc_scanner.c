@@ -10,7 +10,7 @@ U8              object_extension    (const char * fname);
 unsigned int    Crc32_file          (char *crc32file_address);
 
 
-/*==============Статистика сканирования==============*/
+/*==============РЎС‚Р°С‚РёСЃС‚РёРєР° СЃРєР°РЅРёСЂРѕРІР°РЅРёСЏ==============*/
 struct crc_stat_list
 {
     unsigned long long   all_ob;     //max 18446744073709551615
@@ -64,12 +64,12 @@ U8 crc_scan1 (const char * sDir)
 
                         if (crc_sum == -1)
                         {
-                            printf ("Невозможно посчитать CRC");
+                            printf ("РќРµРІРѕР·РјРѕР¶РЅРѕ РїРѕСЃС‡РёС‚Р°С‚СЊ CRC");
                             return 1;
                         }
 
                         fprintf(crcbase, "%X\n", crc_sum);
-                        printf("Объект: %s\n", sPath);
+                        printf("РћР±СЉРµРєС‚: %s\n", sPath);
                         printf ("CRC: %X\n", crc_sum );
                     }
                 }
@@ -125,7 +125,7 @@ U8 crc_scan (const char * sDir)
 
                         if (crc_sum == -1)
                         {
-                            printf ("Невозможно посчитать CRC");
+                            printf ("РќРµРІРѕР·РјРѕР¶РЅРѕ РїРѕСЃС‡РёС‚Р°С‚СЊ CRC");
                             return 1;
                         }
 
@@ -145,7 +145,7 @@ U8 crc_scan (const char * sDir)
                         return 1;
                     }
 
-                        printf("Объект: %s\n", sPath);
+                        printf("РћР±СЉРµРєС‚: %s\n", sPath);
                         printf ("CRC: %X\n", crc_sum );
                         fclose(crcbase);
                     } // while
@@ -163,18 +163,18 @@ U8 crc_scan (const char * sDir)
 
 neutralize_object (const char *path, unsigned long crc_sum)
 {
-    char mes[] = "Объект может быть заражён\nУдалить файл?\n\nПримечание: Если вы доверяете файлу, нажмите 'Нет'\n\n";
+    char mes[] = "РћР±СЉРµРєС‚ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р·Р°СЂР°Р¶С‘РЅ\nРЈРґР°Р»РёС‚СЊ С„Р°Р№Р»?\n\nРџСЂРёРјРµС‡Р°РЅРёРµ: Р•СЃР»Рё РІС‹ РґРѕРІРµСЂСЏРµС‚Рµ С„Р°Р№Р»Сѓ, РЅР°Р¶РјРёС‚Рµ 'РќРµС‚'\n\n";
     char dialog_text[strlen(path)+strlen(mes)+1];
     strcpy(dialog_text,mes);
     strcat(dialog_text,path);
 
-    if (MessageBox(NULL, dialog_text,"Возможная угроза", MB_YESNO|MB_ICONERROR) == IDYES)
+    if (MessageBox(NULL, dialog_text,"Р’РѕР·РјРѕР¶РЅР°СЏ СѓРіСЂРѕР·Р°", MB_YESNO|MB_ICONERROR) == IDYES)
     {
         if(DeleteFile(path)==0)
             errors_list(2, path);
         else
         {
-            printf("Объект %s успешно удалён\n", path);
+            printf("РћР±СЉРµРєС‚ %s СѓСЃРїРµС€РЅРѕ СѓРґР°Р»С‘РЅ\n", path);
             csl.delete_ob++;
         }
     }
@@ -205,7 +205,7 @@ U8 object_size (const char *path)
 
     oSize = fileInfo.nFileSizeLow;
 
-    result = (oSize > 1000000000 || oSize < 1000000 ) ? 1 : 0;  // > 1Мб && < 4 Гб
+    result = (oSize > 1000000000 || oSize < 1000000 ) ? 1 : 0;  // > 1РњР± && < 4 Р“Р±
 
     return result;
 }
@@ -253,8 +253,8 @@ BOOL first_scan = FALSE;
 if (access(CRCBASE, 0))
 {
     if (           MessageBox(NULL,
-                   "CRC-сканирование никогда не запускалось\nЗапустить первичную проверку компьютера?",
-                   "Нет базы CRC-сумм",
+                   "CRC-СЃРєР°РЅРёСЂРѕРІР°РЅРёРµ РЅРёРєРѕРіРґР° РЅРµ Р·Р°РїСѓСЃРєР°Р»РѕСЃСЊ\nР—Р°РїСѓСЃС‚РёС‚СЊ РїРµСЂРІРёС‡РЅСѓСЋ РїСЂРѕРІРµСЂРєСѓ РєРѕРјРїСЊСЋС‚РµСЂР°?",
+                   "РќРµС‚ Р±Р°Р·С‹ CRC-СЃСѓРјРј",
                     MB_YESNO|MB_ICONINFORMATION
                     ) == IDYES
         )
@@ -279,13 +279,13 @@ if (access(CRCBASE, 0))
 U8 n, i, j = 0;;
 char letter[1];
 char path [3];
-DWORD dr = GetLogicalDrives();  //получаем битовую маску доступных дисков, в том числе и съемных
-for(i = 0; i < 26; i++ )        //потому что всего 26 букв
+DWORD dr = GetLogicalDrives();  //РїРѕР»СѓС‡Р°РµРј Р±РёС‚РѕРІСѓСЋ РјР°СЃРєСѓ РґРѕСЃС‚СѓРїРЅС‹С… РґРёСЃРєРѕРІ, РІ С‚РѕРј С‡РёСЃР»Рµ Рё СЃСЉРµРјРЅС‹С…
+for(i = 0; i < 26; i++ )        //РїРѕС‚РѕРјСѓ С‡С‚Рѕ РІСЃРµРіРѕ 26 Р±СѓРєРІ
 {
-    n = ((dr>>i)&0x00000001);   //сдвигаемся по битам
+    n = ((dr>>i)&0x00000001);   //СЃРґРІРёРіР°РµРјСЃСЏ РїРѕ Р±РёС‚Р°Рј
     if( n == 1 )
     {
-        letter[0] = (char) i+65;          //буквы в таблице начинаются с 65 символа( A )
+        letter[0] = (char) i+65;          //Р±СѓРєРІС‹ РІ С‚Р°Р±Р»РёС†Рµ РЅР°С‡РёРЅР°СЋС‚СЃСЏ СЃ 65 СЃРёРјРІРѕР»Р°( A )
         printf ("%c\n", letter[0]);
         path [j++] = letter[0];
         path [j++]  = ':';
@@ -298,7 +298,7 @@ for(i = 0; i < 26; i++ )        //потому что всего 26 букв
     }
 }
     FreeConsole();
-     /*========== Запись статистики сканирования в файл MD5-Scan stat.txt=========*/
+     /*========== Р—Р°РїРёСЃСЊ СЃС‚Р°С‚РёСЃС‚РёРєРё СЃРєР°РЅРёСЂРѕРІР°РЅРёСЏ РІ С„Р°Р№Р» MD5-Scan stat.txt=========*/
             /*==========================================================================*/
             FILE *stats = fopen (CRCSTAT, "a+");
             if(stats == NULL)
@@ -307,7 +307,7 @@ for(i = 0; i < 26; i++ )        //потому что всего 26 букв
                 return 0;
             }
 
-            fprintf(stats, "------ %s ------\nПросканировано файлов: %lu\nОбнаржуено вирусов: %d\nУдалено: %d\n\n",
+            fprintf(stats, "------ %s ------\nРџСЂРѕСЃРєР°РЅРёСЂРѕРІР°РЅРѕ С„Р°Р№Р»РѕРІ: %lu\nРћР±РЅР°СЂР¶СѓРµРЅРѕ РІРёСЂСѓСЃРѕРІ: %d\nРЈРґР°Р»РµРЅРѕ: %d\n\n",
                     date_str(),
                     csl.all_ob,
                     csl.infect_ob,
