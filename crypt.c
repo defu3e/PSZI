@@ -10,7 +10,7 @@ U8 checkExt(const char *path, const char *e_ext);
 /*=========================================================================================*/
 /*=========================================================================================*/
 
-WIN32_FIND_DATA wfd;	//Структура WIN32_FIND_DATA описывает файл,
+WIN32_FIND_DATA wfd;	//РЎС‚СЂСѓРєС‚СѓСЂР° WIN32_FIND_DATA РѕРїРёСЃС‹РІР°РµС‚ С„Р°Р№Р»,
 
 U8 corFile(path)
 {
@@ -38,7 +38,7 @@ U8 operateFile(char *file, char *file2, char mode)
 
 	if (hFile == INVALID_HANDLE_VALUE)
 	{
-		printf("Ошибка файла!!!\n");
+		printf("РћС€РёР±РєР° С„Р°Р№Р»Р°!!!\n");
 		return 0;
 	}
 
@@ -114,7 +114,7 @@ U8 operateFile(char *file, char *file2, char mode)
 
 U8 start_crypt (const char *path, U8 mode)
 {
-/*=============== Проверка существования файла =============*/
+/*=============== РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ С„Р°Р№Р»Р° =============*/
 if (access(path, 0))
 {
     errors_list (5, path);
@@ -124,7 +124,7 @@ if (access(path, 0))
 
     unsigned char * key = KEY;
 
-    if (GetFileAttributes(path) == -1)  // если путь неверный
+    if (GetFileAttributes(path) == -1)  // РµСЃР»Рё РїСѓС‚СЊ РЅРµРІРµСЂРЅС‹Р№
     {
         errors_list(5, path);
         return 1;
@@ -134,7 +134,7 @@ if (access(path, 0))
 
 	if (!ctx)
 	{
-		printf("Выделено недостаточно памяти");
+		printf("Р’С‹РґРµР»РµРЅРѕ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїР°РјСЏС‚Рё");
 
 		return 1;
 	}
@@ -153,10 +153,10 @@ if (access(path, 0))
         corFile(path);
         operateFile(path, newPath, 'e');
 
-        if (MessageBox(NULL, "Удалить исходный файл?", "Удаление исходного файла", MB_YESNO|MB_ICONQUESTION) == IDYES)
+        if (MessageBox(NULL, "РЈРґР°Р»РёС‚СЊ РёСЃС…РѕРґРЅС‹Р№ С„Р°Р№Р»?", "РЈРґР°Р»РµРЅРёРµ РёСЃС…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°", MB_YESNO|MB_ICONQUESTION) == IDYES)
             if(DeleteFile(path) == 0) errors_list(3, path);
 
-        MessageBox(NULL, "Операция шифрования успешно завершена\n", "Шифрование", MB_OK|MB_ICONINFORMATION);
+        MessageBox(NULL, "РћРїРµСЂР°С†РёСЏ С€РёС„СЂРѕРІР°РЅРёСЏ СѓСЃРїРµС€РЅРѕ Р·Р°РІРµСЂС€РµРЅР°\n", "РЁРёС„СЂРѕРІР°РЅРёРµ", MB_OK|MB_ICONINFORMATION);
     }
     else
     {
@@ -170,7 +170,7 @@ if (access(path, 0))
         strrem (oldPath, e_ext);
 
         operateFile(path, oldPath, 'd');
-        MessageBox(NULL, "Операция расшифрования успешно завершена\n", "Расшифровка", MB_OK|MB_ICONINFORMATION);
+        MessageBox(NULL, "РћРїРµСЂР°С†РёСЏ СЂР°СЃС€РёС„СЂРѕРІР°РЅРёСЏ СѓСЃРїРµС€РЅРѕ Р·Р°РІРµСЂС€РµРЅР°\n", "Р Р°СЃС€РёС„СЂРѕРІРєР°", MB_OK|MB_ICONINFORMATION);
     }
 
 
