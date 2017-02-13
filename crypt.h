@@ -7,11 +7,11 @@ typedef struct _blowfish_ctx
 }blowfish_ctx;
 
 
-char strSearch[50];	    //Искомое слово
+char strSearch[50];	    //РСЃРєРѕРјРѕРµ СЃР»РѕРІРѕ
 unsigned long high, low;
 blowfish_ctx *ctx;
 
-//Матрица подстановки
+//РњР°С‚СЂРёС†Р° РїРѕРґСЃС‚Р°РЅРѕРІРєРё
 const unsigned int FIXED_S[4][256] = {
     {0xD1310BA6, 0x98DFB5AC, 0x2FFD72DB, 0xD01ADFB7,
     0xB8E1AFED, 0x6A267E96, 0xBA7C9045, 0xF12C7F99,
@@ -271,7 +271,7 @@ const unsigned int FIXED_S[4][256] = {
     0xB74E6132, 0xCE77E25B, 0x578FDFE3, 0x3AC372E6}
     };
 
-//Ключи шифрования
+//РљР»СЋС‡Рё С€РёС„СЂРѕРІР°РЅРёСЏ
 const unsigned long FIXED_P[] = {
     0x243F6A88, 0x85A308D3, 0x13198A2E, 0x03707344,
     0xA4093822, 0x299F31D0, 0x082EFA98, 0xEC4E6C89,
@@ -287,7 +287,7 @@ const unsigned long FIXED_P[] = {
 		temp = *a, *a = *b, *b = temp;
 }
 
-//Функция F(x)
+//Р¤СѓРЅРєС†РёСЏ F(x)
 unsigned long F(blowfish_ctx *S, unsigned long x)
 {
 	unsigned short a, b, c, d;
@@ -308,7 +308,7 @@ unsigned long F(blowfish_ctx *S, unsigned long x)
 	//return ((S->sbox[0][(x >> 24) & 0xFF] + S->sbox[1][(x >> 16) & 0xFF]) ^ S->sbox[2][(x >> 8) & 0xFF]) + S->sbox[3][(x) & 0xFF];
 }
 
-//Дешифрование
+//Р”РµС€РёС„СЂРѕРІР°РЅРёРµ
 void blowfish_decrypt_block(blowfish_ctx *ctx, unsigned long *xl, unsigned long *xr)
 {
 //	int i;
@@ -353,21 +353,21 @@ unsigned long  Xl;
   *xr = Xr;
 }
 
-//Шифрование
+//РЁРёС„СЂРѕРІР°РЅРёРµ
 //void blowfish_encrypt_block(blowfish_ctx *ctx, unsigned long *high, unsigned long *low)	//high,low -
-//{	//левый и правый блоки
+//{	//Р»РµРІС‹Р№ Рё РїСЂР°РІС‹Р№ Р±Р»РѕРєРё
 //	int i;
 //
-//	for (i = 0; i < 16; i++)	//шифрование 16 раундов
+//	for (i = 0; i < 16; i++)	//С€РёС„СЂРѕРІР°РЅРёРµ 16 СЂР°СѓРЅРґРѕРІ
 //	{
-//		*high ^= ctx->P[i];	//XOR-им high с кючами P[i]
-//		*low ^= F(ctx, *high);	//XOR low и F(x)
-//		swap(low, high);	//Меняем местами
+//		*high ^= ctx->P[i];	//XOR-РёРј high СЃ РєСЋС‡Р°РјРё P[i]
+//		*low ^= F(ctx, *high);	//XOR low Рё F(x)
+//		swap(low, high);	//РњРµРЅСЏРµРј РјРµСЃС‚Р°РјРё
 //	}
 //
 //	swap(low, high);
-//	*low ^= ctx->P[16];	//17-й
-//	*high ^= ctx->P[17];	//и 18-й ключ XOR-ся с выходными блоками последнего раунда
+//	*low ^= ctx->P[16];	//17-Р№
+//	*high ^= ctx->P[17];	//Рё 18-Р№ РєР»СЋС‡ XOR-СЃСЏ СЃ РІС‹С…РѕРґРЅС‹РјРё Р±Р»РѕРєР°РјРё РїРѕСЃР»РµРґРЅРµРіРѕ СЂР°СѓРЅРґР°
 //}
 
 void blowfish_encrypt_block(blowfish_ctx *ctx, unsigned long *xl, unsigned long *xr){
