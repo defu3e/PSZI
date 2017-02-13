@@ -1,0 +1,7 @@
+#define MANIFEST_RESOURCE_ID 1
+
+1 24 "PSZI.exe.manifest"
+
+IDI_ICON ICON "icon.ico"
+
+

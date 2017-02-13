@@ -1,0 +1,109 @@
+# depslib dependency file v1.0
+1434830660 source:d:\workspace\pszi\main.c
+	"headall.h"
+	<Shlobj.h>
+	<Commctrl.h>
+	<Uxtheme.h>
+	<Windowsx.h>
+	<unistd.h>
+
+1434833342 source:d:\workspace\pszi\md5_scanner.c
+	<time.h>
+	<fcntl.h>
+	<errno.h>
+	"headall.h"
+	"md5.h"
+
+1433931188 d:\workspace\pszi\md5.h
+	<stdint.h>
+	<stdlib.h>
+	<string.h>
+	<stdarg.h>
+	<stdio.h>
+	<config.h>
+	<stdlib.h>
+
+1434560561 source:d:\workspace\pszi\errors.c
+	"headall.h"
+
+1433808297 d:\workspace\pszi\head.h
+
+1434678423 source:d:\workspace\pszi\crc_scanner.c
+	"headall.h"
+	"crc.h"
+	<string.h>
+
+1434678525 source:d:\workspace\pszi\crypt.c
+	"headall.h"
+	"crypt.h"
+	<string.h>
+
+1434560565 source:d:\workspace\pszi\autorun.c
+	"headall.h"
+
+1434563491 source:d:\workspace\pszi\resource.rc
+
+1434017383 source:d:\workspace\pszi_0_1\crc_scanner.c
+	<stdio.h>
+	<string.h>
+	<locale.h>
+	<stdint.h>
+	<windows.h>
+	<stdlib.h>
+
+1434017869 source:d:\workspace\pszi_0_1\crypt.c
+	<locale.h>
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<windows.h>
+
+1434014820 source:d:\workspace\pszi_0_1\errors.c
+
+1434014824 source:d:\workspace\pszi_0_1\md5_scanner.c
+	<windows.h>
+	<locale.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<fcntl.h>
+	<errno.h>
+	"md5.h"
+
+1433931188 d:\workspace\pszi_0_1\md5.h
+	<stdint.h>
+	<stdlib.h>
+	<string.h>
+	<stdarg.h>
+	<stdio.h>
+	<config.h>
+	<stdlib.h>
+
+1434041696 source:d:\workspace\pszi_0_1\resource.rc
+
+1434050222 source:d:\workspace\pszi_0_1\autorun.c
+	<stdio.h>
+	<windows.h>
+
+1434050222 source:d:\workspace\pszi_0_1\main.c
+	<windows.h>
+	<commctrl.h>
+	<Shlobj.h>
+	<Uxtheme.h>
+	<stdio.h>
+	<stdlib.h>
+	<Windowsx.h>
+	<unistd.h>
+	<locale.h>
+
+1434678525 d:\workspace\pszi\headall.h
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	<locale.h>
+	<windows.h>
+
+1434678525 d:\workspace\pszi\crc.h
+
+1434678539 d:\workspace\pszi\crypt.h
+
