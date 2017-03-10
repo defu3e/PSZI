@@ -8,4 +8,4 @@
 
 #define U8       uint8_t
 
-extern  void    errors_list (U8 ecode, char *param);    // функция обработки ошибок
+extern  void    errors_list (U8 ecode, char *param);   // ГґГіГ­ГЄГ¶ГЁГї Г®ГЎГ°Г ГЎГ®ГІГЄГЁ Г®ГёГЁГЎГ®ГЄ
