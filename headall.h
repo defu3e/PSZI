@@ -8,4 +8,4 @@
 
 #define U8       uint8_t
 
-extern  void    errors_list (U8 ecode, char *param);   // ôóíêöèÿ îáðàáîòêè îøèáîê
+extern  void    errors_list (U8 ecode, char *param);   
