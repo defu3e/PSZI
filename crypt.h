@@ -305,25 +305,13 @@ unsigned long F(blowfish_ctx *S, unsigned long x)
    y = y + ctx->sbox[3][d];
 
    return y;
-	//return ((S->sbox[0][(x >> 24) & 0xFF] + S->sbox[1][(x >> 16) & 0xFF]) ^ S->sbox[2][(x >> 8) & 0xFF]) + S->sbox[3][(x) & 0xFF];
 }
 
 //Дешифрование
 void blowfish_decrypt_block(blowfish_ctx *ctx, unsigned long *xl, unsigned long *xr)
 {
-//	int i;
-//
-//	for (i = 17; i > 1; i--)
-//	{
-//		*high ^= ctx->P[i];
-//		*low ^= F(ctx, *high);
-//		swap(low, high);
-//	}
-//
-//	swap(low, high);
-//	*high ^= ctx->P[0];
-//	*low ^= ctx->P[1];
-unsigned long  Xl;
+
+  unsigned long  Xl;
   unsigned long  Xr;
   unsigned long  temp;
   short       i;
@@ -352,23 +340,6 @@ unsigned long  Xl;
   *xl = Xl;
   *xr = Xr;
 }
-
-//Шифрование
-//void blowfish_encrypt_block(blowfish_ctx *ctx, unsigned long *high, unsigned long *low)	//high,low -
-//{	//левый и правый блоки
-//	int i;
-//
-//	for (i = 0; i < 16; i++)	//шифрование 16 раундов
-//	{
-//		*high ^= ctx->P[i];	//XOR-им high с кючами P[i]
-//		*low ^= F(ctx, *high);	//XOR low и F(x)
-//		swap(low, high);	//Меняем местами
-//	}
-//
-//	swap(low, high);
-//	*low ^= ctx->P[16];	//17-й
-//	*high ^= ctx->P[17];	//и 18-й ключ XOR-ся с выходными блоками последнего раунда
-//}
 
 void blowfish_encrypt_block(blowfish_ctx *ctx, unsigned long *xl, unsigned long *xr){
   unsigned long  Xl;
@@ -401,44 +372,6 @@ void blowfish_encrypt_block(blowfish_ctx *ctx, unsigned long *xl, unsigned long 
 
 int blowfish_init(blowfish_ctx *ctx, unsigned char *key, int keyLen)
 {
-//	int i, j;
-//	unsigned long k, l;
-//	unsigned long long_key;
-//
-//	if (ctx && key && key_len > 0 && key_len <= 56)
-//	{
-//		memcpy(ctx->P, FIXED_P, 18 * sizeof(FIXED_P));
-//
-//		for (i = 0; i < 4; i++)
-//			memcpy(ctx->sbox[i], FIXED_S[i], sizeof(FIXED_S[i]));
-//
-//		for (i = 0, k = 0; i < 18; i++)
-//		{
-//			for (j = 0, long_key = 0; j < 4; j++, k++)
-//				long_key = (long_key << 8) | key[k % key_len];
-//			ctx->P[i] ^= long_key;
-//		}
-//
-//		for (i = 0, k = 0, l = 0; i < 18; i++)
-//		{
-//			blowfish_encrypt_block(ctx, &k, &l);
-//			ctx->P[i] = k;
-//			ctx->P[++i] = l;
-//		}
-//
-//		for (i = 0; i < 4; i++)
-//		{
-//			for (j = 0; j < 256; j++)
-//			{
-//				blowfish_encrypt_block(ctx, &k, &l);
-//				ctx->sbox[i][j] = k;
-//				ctx->sbox[i][++j] = l;
-//			}
-//		}
-//		return 0;
-//	}
-//
-//	return -1;
   int i, j, k;
   unsigned long data, datal, datar;
 
