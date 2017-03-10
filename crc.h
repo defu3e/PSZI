@@ -84,7 +84,7 @@ unsigned int Crc32_file(char *crc32file_address)
     FILE *crc32file;
     if ((crc32file = fopen(crc32file_address,"rb"))== NULL)
     {
-        printf("‘айл не открылc¤");
+        printf("Файл не открылc¤");
         return -1;
     }
     else
